@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in · Student Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script defer src="/config.js"></script>
+  <script defer src="/js/common.js"></script>
+  <script defer src="/js/login.js"></script>
+</head>
+<body>
+  <main class="auth-shell">
+    <section class="auth-card">
+      <a class="brand" href="/">Student Portal</a>
+      <p class="eyebrow">ONE SECURE ACCOUNT</p>
+      <h1>Welcome back</h1>
+      <p class="muted">Sign in to continue to your student account.</p>
+      <form id="login-form" novalidate>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="username" required>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" maxlength="128" autocomplete="current-password" required>
+        <div class="form-row form-row-end">
+          <a href="/forgot-password.html">Forgot password?</a>
+        </div>
+        <button class="button primary full" type="submit">Sign in</button>
+        <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+      </form>
+      <p class="auth-footer">New to the portal? <a href="/register.html">Create an account</a></p>
+      <aside id="local-admin" class="notice warning hidden"></aside>
+    </section>
+  </main>
+</body>
+</html>

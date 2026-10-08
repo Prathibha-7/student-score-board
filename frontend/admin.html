@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin dashboard · Student Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script defer src="/config.js"></script>
+  <script defer src="/js/common.js"></script>
+  <script defer src="/js/admin.js"></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/">Student Portal</a><button class="button secondary" data-logout>Log out</button></header>
+  <main class="page-shell">
+    <section class="welcome panel"><div><p class="eyebrow">ADMINISTRATION</p><h1>Student directory</h1><p class="muted">Review, filter, and maintain student records.</p></div><span id="student-count" class="count-badge">0 students</span></section>
+    <section class="panel">
+      <div class="filter-grid">
+        <div class="field"><label for="filter-name">Search name</label><input id="filter-name" type="search" placeholder="Start typing a name"></div>
+        <div class="field"><label for="filter-class">Filter class</label><select id="filter-class"><option value="">All classes</option></select></div>
+        <div class="field"><label for="min-age">Minimum age</label><input id="min-age" type="number" min="0" max="120" placeholder="Any"></div>
+        <div class="field"><label for="max-age">Maximum age</label><input id="max-age" type="number" min="0" max="120" placeholder="Any"></div>
+      </div>
+      <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Name</th><th>Email</th><th>Age</th><th>Class</th><th>Subject</th><th>Marks</th><th>Aadhaar</th><th>Actions</th></tr></thead>
+        <tbody id="student-rows"></tbody>
+      </table></div>
+    </section>
+  </main>
+  <dialog id="edit-dialog" class="edit-dialog">
+    <form id="edit-form" class="form-grid" novalidate>
+      <div class="dialog-heading full-span"><div><p class="eyebrow">STUDENT RECORD</p><h2>Edit details</h2></div><button class="icon-button" type="button" id="close-dialog" aria-label="Close">×</button></div>
+      <input name="student_id" type="hidden">
+      <div class="field"><label for="edit-name">Full name (locked)</label><input id="edit-name" name="name" readonly></div>
+      <div class="field"><label for="edit-email">Email (locked)</label><input id="edit-email" name="email" type="email" readonly></div>
+      <div class="field"><label for="edit-dob">Date of birth</label><input id="edit-dob" name="dob" type="date" required></div>
+      <fieldset class="field"><legend>Gender</legend><div class="inline-options">
+        <label><input type="radio" name="gender" value="Female" required> Female</label><label><input type="radio" name="gender" value="Male"> Male</label>
+        <label><input type="radio" name="gender" value="Non-binary"> Non-binary</label><label><input type="radio" name="gender" value="Prefer not to say"> Prefer not to say</label>
+      </div></fieldset>
+      <div class="field"><label for="edit-qualification">Qualification</label><select id="edit-qualification" name="qualification" required><option>High School</option><option>Diploma</option><option>Bachelor's</option><option>Master's</option><option>Doctorate</option><option>Other</option></select></div>
+      <fieldset class="field"><legend>Interests</legend><div class="inline-options">
+        <label><input type="checkbox" name="interests" value="Arts"> Arts</label><label><input type="checkbox" name="interests" value="Coding"> Coding</label>
+        <label><input type="checkbox" name="interests" value="Music"> Music</label><label><input type="checkbox" name="interests" value="Science"> Science</label>
+        <label><input type="checkbox" name="interests" value="Sports"> Sports</label><label><input type="checkbox" name="interests" value="Volunteering"> Volunteering</label>
+      </div></fieldset>
+      <div class="field"><label for="edit-class">Class</label><input id="edit-class" name="class_name" required></div>
+      <div class="field"><label for="edit-subject">Subject</label><input id="edit-subject" name="subject" required></div>
+      <div class="field"><label for="edit-marks">Marks (%)</label><input id="edit-marks" name="marks" type="number" min="0" max="100" step="0.01" required></div>
+      <div class="field"><label for="edit-aadhaar">Replace Aadhaar PDF</label><input id="edit-aadhaar" name="aadhaar" type="file" accept="application/pdf,.pdf"></div>
+      <div class="full-span"><p id="edit-message" class="form-message" role="status"></p><button class="button primary" type="submit">Save changes</button> <button class="button secondary" type="button" id="cancel-dialog">Cancel</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

@@ -49,6 +49,8 @@ The database account needs read/write privileges on `student_management`. `datab
 
 See [DEPLOYMENT.md](./DEPLOYMENT.md) for generic production setup, reverse-proxy guidance, health checks, and operations. Production should set `ALLOW_LOCAL_FALLBACK=false`, `COOKIE_SECURE=true`, and use a same-origin HTTPS reverse proxy. The app reads environment variables from its process; `.env.example` is a reference template and is not loaded automatically.
 
+For a Render deployment, use the included [`render.yaml`](./render.yaml) Blueprint. It starts the Python app with a persistent 1 GB Aadhaar upload disk and explicitly disables local-browser fallback. Provide an external MySQL service and the prompted database/admin settings in the Render Blueprint setup; Render does not provision MySQL from this blueprint. The Starter service and persistent disk are paid Render resources.
+
 ### Password reset email
 
 Set `SMTP_HOST`, `SMTP_FROM`, and `APP_BASE_URL` (the public absolute application URL). Optional settings are `SMTP_PORT` (defaults to 587), `SMTP_USER`, `SMTP_PASSWORD`, and `SMTP_TLS` (defaults to `true`). Without SMTP configuration, the API reports that password recovery email is unavailable rather than claiming a reset was sent. Reset links are single-use and expire after 30 minutes.

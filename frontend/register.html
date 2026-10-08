@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student registration · Student Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script defer src="/config.js"></script>
+  <script defer src="/js/common.js"></script>
+  <script defer src="/js/register.js"></script>
+</head>
+<body>
+  <main class="page-shell narrow">
+    <header class="topbar"><a class="brand" href="/">Student Portal</a><a href="/login.html">Sign in</a></header>
+    <section class="panel">
+      <p class="eyebrow">GET STARTED</p>
+      <h1>Student registration</h1>
+      <p class="muted">Complete each field to create your student account.</p>
+      <form id="register-form" class="form-grid" novalidate>
+        <div class="field"><label for="name">Full name</label><input id="name" name="name" value="Prathibha" maxlength="120" autocomplete="name" required></div>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" maxlength="254" autocomplete="email" required></div>
+        <div class="field"><label for="password">Password</label><input id="password" name="password" type="password" minlength="8" maxlength="128" autocomplete="new-password" required><small>8–128 characters.</small></div>
+        <div class="field"><label for="dob">Date of birth</label><input id="dob" name="dob" type="date" required></div>
+        <fieldset class="field"><legend>Gender</legend>
+          <div class="inline-options">
+            <label><input type="radio" name="gender" value="Female" required> Female</label>
+            <label><input type="radio" name="gender" value="Male"> Male</label>
+            <label><input type="radio" name="gender" value="Non-binary"> Non-binary</label>
+            <label><input type="radio" name="gender" value="Prefer not to say"> Prefer not to say</label>
+          </div>
+        </fieldset>
+        <div class="field"><label for="qualification">Qualification</label>
+          <select id="qualification" name="qualification" required>
+            <option value="">Choose a qualification</option><option>High School</option><option>Diploma</option>
+            <option>Bachelor's</option><option>Master's</option><option>Doctorate</option><option>Other</option>
+          </select>
+        </div>
+        <fieldset class="field"><legend>Interests <span class="muted">(choose at least one)</span></legend>
+          <div class="inline-options">
+            <label><input type="checkbox" name="interests" value="Arts"> Arts</label>
+            <label><input type="checkbox" name="interests" value="Coding"> Coding</label>
+            <label><input type="checkbox" name="interests" value="Music"> Music</label>
+            <label><input type="checkbox" name="interests" value="Science"> Science</label>
+            <label><input type="checkbox" name="interests" value="Sports"> Sports</label>
+            <label><input type="checkbox" name="interests" value="Volunteering"> Volunteering</label>
+          </div>
+        </fieldset>
+        <div class="field"><label for="class_name">Class</label><input id="class_name" name="class_name" maxlength="80" required></div>
+        <div class="field"><label for="subject">Subject</label><input id="subject" name="subject" maxlength="120" required></div>
+        <div class="field"><label for="marks">Marks (%)</label><input id="marks" name="marks" type="number" min="0" max="100" step="0.01" required></div>
+        <div class="field full-span"><label for="aadhaar">Aadhaar document (PDF only)</label><input id="aadhaar" name="aadhaar" type="file" accept="application/pdf,.pdf" required><small>PDF, maximum 5 MB. A unique filename is generated on the server.</small></div>
+        <div class="full-span"><p id="form-message" class="form-message" role="status" aria-live="polite"></p><button class="button primary full" type="submit">Create student account</button></div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

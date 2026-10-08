@@ -1,0 +1,51 @@
+services:
+  - type: web
+    name: student-score-board
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: python backend/server.py
+    healthCheckPath: /api/health
+    disk:
+      name: student-score-board-uploads
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: ALLOW_LOCAL_FALLBACK
+        value: "false"
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: UPLOAD_DIR
+        value: /var/data/uploads
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: "3306"
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        value: student_management
+      - key: DB_SSL_CA
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: APP_BASE_URL
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
+      - key: SMTP_FROM
+        sync: false
+      - key: SMTP_TLS
+        value: "true"
